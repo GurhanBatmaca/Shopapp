@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/style.css">
+    <title>Document</title>
+</head>
+<body>
+
+    @if(IsSectionDefined("MessageBox"))
+    {
+        @RenderSection("MessageBox")
+    }
+    else
+    {
+        <div class="alert alert-primary text-center m-0">
+            Welcome!
+        </div>
+    }
+
+    @* @RenderSection("MessageBox",false) *@
+
+    @await Html.PartialAsync("_navbar")
+    <partial name ="_header">
+
+    <main class="py-4">
+        <div class="container">
+
+        @if(IsSectionDefined("Categories"))
+        {
+            <div class="row">
+                <div class="col-md-3">   
+                    @RenderSection("Categories")                
+                </div>
+
+                <div class="col-md-9">
+                    @RenderBody()
+                </div>
+            </div>
+        }
+        else{
+            <div class="row">
+                <div class="col-md-12"> 
+                    @RenderBody()
+                </div>
+            </div>
+        }
+           
+        </div>
+    </main>
+
+
+    @RenderSection("Scripts",false)
+</body>
+</html>

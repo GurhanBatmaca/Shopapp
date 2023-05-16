@@ -1,0 +1,38 @@
+@model ProductViewModel
+
+
+@{   
+    var products = @Model.Products;
+    var popularClass = products.Count > 2 ? "popular" : "";
+}
+
+@section MessageBox
+{
+    <div class="alert alert-warning text-center m-0">
+        You have a message!
+    </div>
+}
+
+@section Scripts
+{
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+}
+
+@if(products.Count == 0)
+{
+    @await Html.PartialAsync("_noproduct")
+}
+else
+{
+    <div class="row">
+        @foreach (var product in products)
+        {
+            <div class="col-md-3">
+                @await Html.PartialAsync("_product",product)
+            </div>
+        }    
+    </div>       
+}
+
+
+
