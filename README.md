@@ -1,1 +1,1 @@
-#  .net mvc project without database
+#  Asp.Net Core Mvc project, without EF Core and Database
